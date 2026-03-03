@@ -1,0 +1,300 @@
+ :root {
+      --bg: #e2e2e2;
+      --ink: #111111;
+      --accent: #c0c0c0;
+      --accent-dark: #000000;
+      --card: #ffffff;
+      --line: #9e9e9e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 20%, #ffffff 0, #ffffff 20%, transparent 55%),
+        linear-gradient(160deg, #f2f2f2 0%, #cfcfcf 100%);
+      min-height: 100vh;
+      padding-top: 78px;
+    }
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      padding: 0.9rem 1rem;
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid rgba(192, 192, 192, 0.65);
+      backdrop-filter: blur(6px);
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      background: var(--accent);
+      color: #111111;
+      padding: 0.6rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .top-nav a:hover,
+    .top-nav a:focus-visible {
+      background: #ffffff;
+      border-color: #9e9e9e;
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      padding: 2.6rem 1rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(192, 192, 192, 0.35));
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+    }
+
+    .hero p {
+      margin: 0.8rem auto 0;
+      max-width: 660px;
+      font-size: 1.05rem;
+    }
+
+    .section {
+      padding: 2rem 1rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      margin: 0 0 1rem;
+      font-size: 1.6rem;
+      color: var(--accent-dark);
+    }
+
+    .slider {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(260px, 1fr);
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+      scrollbar-width: thin;
+      scrollbar-color: #7d7d7d #dcdcdc;
+    }
+
+    .slider::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .slider::-webkit-scrollbar-track {
+      background: #dcdcdc;
+      border-radius: 999px;
+    }
+
+    .slider::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    .property-card {
+      scroll-snap-align: start;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .property-image {
+      height: 170px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .property-content {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      flex: 1;
+    }
+
+    .property-title {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--accent-dark);
+    }
+
+    .property-meta {
+      margin: 0;
+      color: #2e2e2e;
+      font-size: 0.95rem;
+    }
+
+    .property-price {
+      margin-top: auto;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .payment-section {
+      margin-top: 2rem;
+      background: #e5e5e5;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 2rem 1rem 1.6rem;
+      text-align: center;
+    }
+
+    .payment-section h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: #000000;
+      letter-spacing: 0.01em;
+    }
+
+    .payment-subtitle {
+      margin: 0.35rem 0 1.6rem;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: #222222;
+    }
+
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .pay-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 0.8rem;
+    }
+
+    .pay-brand {
+      margin: 0 0 0.8rem;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .pay-brand.zelle {
+      color: #222222;
+    }
+
+    .pay-brand.venmo {
+      color: #555555;
+    }
+
+    .pay-brand.cashapp {
+      color: #777777;
+    }
+
+    .qr-box {
+      width: min(210px, 100%);
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+      border: 2px solid #1f1f1f;
+      border-radius: 10px;
+      background:
+        radial-gradient(circle at 10px 10px, #000 5px, transparent 5px) 0 0/30px 30px,
+        radial-gradient(circle at 20px 20px, #000 4px, transparent 4px) 0 0/26px 26px,
+        #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .payment-notes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(240px, 1fr));
+      gap: 1rem;
+      text-align: center;
+      margin-top: 0.7rem;
+    }
+
+    .payment-notes h3 {
+      margin: 0 0 0.45rem;
+      font-size: 2rem;
+      text-decoration: underline;
+      color: #000000;
+    }
+
+    .payment-notes p {
+      margin: 0.25rem 0;
+      font-size: 1.05rem;
+      color: #1f1f1f;
+    }
+
+    .payment-confirm {
+      margin: 1.2rem 0 0;
+      font-size: 1.9rem;
+      font-weight: 700;
+      text-decoration: underline;
+      color: #000000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.25rem;
+      border-top: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 700px) {
+      .property-card {
+        min-height: 350px;
+      }
+
+      .payment-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-notes {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-section h2 {
+        font-size: 2rem;
+      }
+
+      .payment-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .payment-notes h3 {
+        font-size: 1.55rem;
+      }
+
+      .payment-confirm {
+        font-size: 1.35rem;
+      }
+    }
