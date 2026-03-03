@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Request | Silver Saddle Realty</title>
+  <style>
+    :root {
+      --bg: #e2e2e2;
+      --ink: #111111;
+      --accent: #c0c0c0;
+      --accent-dark: #000000;
+      --card: rgba(255, 255, 255, 0.94);
+      --line: #9e9e9e;
+      --shadow: rgba(0, 0, 0, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.92), transparent 38%),
+        linear-gradient(150deg, #f5f5f5 0%, #d1d1d1 48%, #b9b9b9 100%);
+      padding: 92px 1rem 3rem;
+      display: grid;
+      place-items: center;
+    }
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      padding: 0.9rem 1rem;
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid rgba(192, 192, 192, 0.65);
+      backdrop-filter: blur(6px);
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      background: var(--accent);
+      color: #111111;
+      padding: 0.6rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .top-nav a:hover,
+    .top-nav a:focus-visible {
+      background: #ffffff;
+      border-color: #9e9e9e;
+      transform: translateY(-1px);
+    }
+
+    .page-shell {
+      width: min(100%, 920px);
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+    }
+
+    .hero p {
+      margin: 0.85rem auto 0;
+      max-width: 650px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .form-card {
+      background: var(--card);
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+
+    .card-banner {
+      padding: 1.4rem 1.5rem;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.96), rgba(70, 70, 70, 0.92));
+      color: #ffffff;
+    }
+
+    .card-banner h2 {
+      margin: 0;
+      font-size: 1.45rem;
+      letter-spacing: 0.03em;
+    }
+
+    .card-banner p {
+      margin: 0.45rem 0 0;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    form {
+      padding: 1.6rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.1rem 1.2rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .field-full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #1b1b1b;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      font: inherit;
+      color: var(--ink);
+      background: #fbfbfb;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #444444;
+      box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
+      transform: translateY(-1px);
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.4rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .actions p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: #3a3a3a;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 0.95rem 1.5rem;
+      font: inherit;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      background: linear-gradient(90deg, #050505, #575757);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover,
+    button:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+      outline: none;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 112px 0.85rem 2rem;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-nav" aria-label="Primary navigation">
+    <a href="index.html#about-us">About Us</a>
+    <a href="index.html#pay-now">Pay Now</a>
+    <a href="maintenance-request.html">Maintenance Request</a>
+    <a href="index.html#apply-now">Apply Now</a>
+  </nav>
+
+  <div class="page-shell">
+    <header class="hero">
+      <h1>Silver Saddle Realty</h1>
+      <p>Submit a maintenance request with your contact information and a clear description of the issue so the property team can review it quickly.</p>
+    </header>
+
+    <section class="form-card" aria-labelledby="maintenance-form-title">
+      <div class="card-banner">
+        <h2 id="maintenance-form-title">Maintenance Request Form</h2>
+        <p>Frontend-only page for collecting tenant request details.</p>
+      </div>
+
+      <form>
+        <div class="form-grid">
+          <div class="field">
+            <label for="tenant-name">Tenant Name</label>
+            <input id="tenant-name" name="tenant-name" type="text" placeholder="Enter full name">
+          </div>
+
+          <div class="field">
+            <label for="tenant-phone">Tenant's Phone Number</label>
+            <input id="tenant-phone" name="tenant-phone" type="tel" placeholder="(555) 123-4567">
+          </div>
+
+          <div class="field field-full">
+            <label for="tenant-address">Tenant's Address</label>
+            <input id="tenant-address" name="tenant-address" type="text" placeholder="Street address, city, state, ZIP">
+          </div>
+
+          <div class="field field-full">
+            <label for="tenant-email">Tenant's Email</label>
+            <input id="tenant-email" name="tenant-email" type="email" placeholder="name@example.com">
+          </div>
+
+          <div class="field field-full">
+            <label for="request-description">Description of Request</label>
+            <textarea id="request-description" name="request-description" placeholder="Describe the maintenance issue, location in the unit, and anything that helps the team prepare."></textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <p>Please include enough detail to help schedule the correct repair.</p>
+          <button type="submit">Submit Request</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</body>
+</html>
