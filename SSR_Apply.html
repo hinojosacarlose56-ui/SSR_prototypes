@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tenant Application | Silver Saddle Realty</title>
+
+
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+ <nav class="top-nav" aria-label="Primary navigation">
+    <a href="carousel.html">Home</a>
+    <a href="SSR_Payments.html">Pay Now</a>
+    <a href="SSR_Maintenance.html">Maintenance Request</a>
+    <a href="SSR_Apply.html">Apply Now</a>
+    <button class="lang-btn" onclick="toggleLanguage()" aria-label="Toggle language">
+    🌐 EN, 🌐 ESP
+  </button>
+    
+  </nav>
+
+  <div class="page-shell">
+    <header class="hero">
+    <img src="SSR_logo.png" alt="Silver Saddle Realty logo" class="hero-image">
+      <p>Thank you for your interest! Fill out your information below to start the application process. We'll be in touch soon!</p>
+    </header>
+
+    <section class="form-card" aria-labelledby="maintenance-form-title">
+      <div class="card-banner">
+        <h2 id="maintenance-form-title">Tenant Application Form</h2>
+        <p>Mockup page for collecting tenant application details.</p>
+      </div>
+
+      <form>
+        <div class="form-grid">
+          <div class="field">
+            <label for="First-name">First Name:</label>
+            <input id="First-name" name="First-name" type="text" placeholder="Enter first name">
+          </div>
+
+          <div class="field">
+            <label for="Last-name">Last Name:</label>
+            <input id="Last-name" name="Last-name" type="text" placeholder="Enter last name">
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone Number:</label>
+            <input id="phone" name="phone" type="tel" placeholder="(555) 123-4567">
+          </div>
+
+          <div class="field field-full">
+            <label for="current-address">Current Address:</label>
+            <input id="current-address" name="current-address" type="text" placeholder="Street address, city, state, ZIP">
+          </div>
+
+          <div class="field field-full">
+            <label for="email">Email:</label>
+            <input id="email" name="email" type="email" placeholder="name@example.com">
+          </div>
+
+          <div class="field field-full">
+            <label for="property-of-interest">Property of Interest:</label>
+            <input id="property-of-interest" name="property-of-interest" type="text" placeholder="Property Address">
+          </div>
+
+          <div class="field field-full">
+            <label for="request-description">Additional Information</label>
+            <textarea id="request-description" name="request-description" placeholder="Any notes for the team?"></textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Submit Application</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</body>
+</html>

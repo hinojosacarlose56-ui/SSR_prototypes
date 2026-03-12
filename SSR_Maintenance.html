@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Request | Silver Saddle Realty</title>
+
+
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+ <nav class="top-nav" aria-label="Primary navigation">
+    <a href="carousel.html">Home</a>
+    <a href="SSR_Payments.html">Pay Now</a>
+    <a href="SSR_Maintenance.html">Maintenance Request</a>
+    <a href="SSR_Apply.html">Apply Now</a>
+    <button class="lang-btn" onclick="toggleLanguage()" aria-label="Toggle language">
+    🌐 EN, 🌐 ESP
+  </button>
+    
+  </nav>
+
+  <div class="page-shell">
+    <header class="hero">
+    <img src="SSR_logo.png" alt="Silver Saddle Realty logo" class="hero-image">
+      <p>Submit a maintenance request with your contact information and a clear description of the issue so the property team can review it quickly.</p>
+    </header>
+
+    <section class="form-card" aria-labelledby="maintenance-form-title">
+      <div class="card-banner">
+        <h2 id="maintenance-form-title">Maintenance Request Form</h2>
+        <p>Frontend-only page for collecting tenant request details.</p>
+      </div>
+
+      <form>
+        <div class="form-grid">
+          <div class="field">
+            <label for="tenant-name">Tenant Name:</label>
+            <input id="tenant-name" name="tenant-name" type="text" placeholder="Enter full name">
+          </div>
+
+          <div class="field">
+            <label for="tenant-phone">Tenant's Phone Number:</label>
+            <input id="tenant-phone" name="tenant-phone" type="tel" placeholder="(555) 123-4567">
+          </div>
+
+          <div class="field field-full">
+            <label for="tenant-address">Tenant's Address:</label>
+            <input id="tenant-address" name="tenant-address" type="text" placeholder="Street address, city, state, ZIP">
+          </div>
+
+          <div class="field field-full">
+            <label for="tenant-email">Tenant's Email:</label>
+            <input id="tenant-email" name="tenant-email" type="email" placeholder="name@example.com">
+          </div>
+
+          <div class="field field-full">
+            <label for="request-description">Description of Request:</label>
+            <textarea id="request-description" name="request-description" placeholder="Describe the maintenance issue, location in the unit, and anything that helps the team prepare."></textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <p>Please include enough detail to help schedule the correct repair.</p>
+          <button type="submit">Submit Request</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</body>
+</html>

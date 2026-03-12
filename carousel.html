@@ -1,0 +1,202 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Saddle Realty</title>
+  <link href="SSR.css" rel="stylesheet">
+   
+</head>
+<body>
+  <nav class="top-nav" aria-label="Primary navigation">
+     <a href="SSR_Index.html">Home</a>
+    <a href="SSR_Payments.html">Pay Now</a>
+    <a href="SSR_Maintenance.html">Maintenance Request</a>
+    <a href="SSR_Apply.html">Apply Now</a>
+    <button class="lang-btn" onclick="toggleLanguage()" aria-label="Toggle language">
+    🌐 EN, 🌐 ESP
+  </button>
+  </nav>
+
+  <header class="hero">
+    <img src="SSR_logo.png" alt="Silver Saddle Realty logo" class="hero-image">
+    <p>Helping families and investors find exceptional homes, ranches, and mountain-view properties across the region.</p>
+  </header>
+
+  <main class="section">
+    <h2>Featured Properties</h2>
+    <section class="featured-carousel" aria-label="Featured property carousel">
+      <div class="carousel-header">
+        <p>Browse the current spotlight listings with carousel controls instead of horizontal page scrolling.</p>
+        <div class="carousel-controls">
+          <button class="carousel-button" type="button" id="featured-prev" aria-label="Show previous featured properties">&#8592;</button>
+          <button class="carousel-button" type="button" id="featured-next" aria-label="Show next featured properties">&#8594;</button>
+        </div>
+      </div>
+
+      <div class="carousel-viewport">
+        <div class="slider" id="featured-slider" aria-live="polite"></div>
+      </div>
+
+      <div class="carousel-dots" id="featured-dots" aria-label="Carousel slide navigation"></div>
+    </section>
+
+  </main>      
+      
+
+  <footer>
+    Silver Saddle Realty &#8226; (555) 010-7823 &#8226; info@silversaddlerealty.com
+  </footer>
+
+  <script>
+    const featuredProperties = [
+      {
+        title: "Cedar Ridge Estate",
+        meta: "4 Bed • 3 Bath • 3,100 sq ft • Austin, TX",
+        description: "Large backyard, open-concept kitchen, and modern finishes.",
+        price: "$785,000",
+        image: "https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        title: "Willow Creek Ranch",
+        meta: "5 Bed • 4 Bath • 4,450 sq ft • Bozeman, MT",
+        description: "Mountain views, horse-ready grounds, and custom woodwork.",
+        price: "$1,250,000",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        title: "Sunset Trail Residence",
+        meta: "3 Bed • 2 Bath • 2,280 sq ft • Denver, CO",
+        description: "Energy-efficient build with smart-home upgrades and deck.",
+        price: "$629,000",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        title: "Pioneer Valley Home",
+        meta: "4 Bed • 2.5 Bath • 2,900 sq ft • Fort Collins, CO",
+        description: "Quiet neighborhood, finished basement, and large corner lot.",
+        price: "$712,500",
+        image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        title: "High Mesa Retreat",
+        meta: "6 Bed • 5 Bath • 5,100 sq ft • Scottsdale, AZ",
+        description: "Luxury pool, guest casita, and panoramic desert sunsets.",
+        price: "$1,980,000",
+        image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1200&q=80"
+      }
+    ];
+
+    const carousel = document.querySelector(".featured-carousel");
+    const slider = document.getElementById("featured-slider");
+    const dots = document.getElementById("featured-dots");
+    const prevButton = document.getElementById("featured-prev");
+    const nextButton = document.getElementById("featured-next");
+    let currentIndex = 0;
+    let autoplayId = null;
+    const autoplayDelay = 3500;
+    const mobileBreakpoint = 700;
+
+    function getVisibleIndexes() {
+      if (window.innerWidth <= mobileBreakpoint) {
+        return [currentIndex];
+      }
+
+      const previousIndex = (currentIndex - 1 + featuredProperties.length) % featuredProperties.length;
+      const nextIndex = (currentIndex + 1) % featuredProperties.length;
+      return [previousIndex, currentIndex, nextIndex];
+    }
+
+    function renderSlides() {
+      const visibleIndexes = getVisibleIndexes();
+
+      slider.innerHTML = visibleIndexes.map((propertyIndex) => {
+        const property = featuredProperties[propertyIndex];
+        const isActive = propertyIndex === currentIndex;
+
+        return `
+          <article class="property-card${isActive ? " is-active" : ""}" aria-hidden="${isActive ? "false" : "true"}">
+            <div class="property-image" style="background-image: url('${property.image}');"></div>
+            <div class="property-content">
+              <h3 class="property-title">${property.title}</h3>
+              <p class="property-meta">${property.meta}</p>
+              <p class="property-meta">${property.description}</p>
+              <p class="property-price">${property.price}</p>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderDots() {
+      dots.innerHTML = "";
+
+      for (let i = 0; i < featuredProperties.length; i += 1) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "carousel-dot";
+        dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+        dot.setAttribute("aria-current", String(i === currentIndex));
+        dot.addEventListener("click", () => {
+          goToSlide(i);
+          startAutoplay();
+        });
+        dots.appendChild(dot);
+      }
+    }
+
+    function updateCarousel() {
+      renderSlides();
+
+      Array.from(dots.children).forEach((dot, index) => {
+        dot.setAttribute("aria-current", String(index === currentIndex));
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = (index + featuredProperties.length) % featuredProperties.length;
+      updateCarousel();
+    }
+
+    function stopAutoplay() {
+      if (autoplayId) {
+        window.clearInterval(autoplayId);
+        autoplayId = null;
+      }
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      autoplayId = window.setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, autoplayDelay);
+    }
+
+    prevButton.addEventListener("click", () => {
+      goToSlide(currentIndex - 1);
+      startAutoplay();
+    });
+
+    nextButton.addEventListener("click", () => {
+      goToSlide(currentIndex + 1);
+      startAutoplay();
+    });
+
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+    carousel.addEventListener("focusin", stopAutoplay);
+    carousel.addEventListener("focusout", (event) => {
+      if (!carousel.contains(event.relatedTarget)) {
+        startAutoplay();
+      }
+    });
+
+    window.addEventListener("resize", updateCarousel);
+
+    renderSlides();
+    renderDots();
+    updateCarousel();
+    startAutoplay();
+  </script>
+</body>
+</html>

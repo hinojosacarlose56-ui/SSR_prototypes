@@ -16,11 +16,13 @@
       font-family: "Trebuchet MS", "Gill Sans", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 20% 20%, #ffffff 0, #ffffff 20%, transparent 55%),
+        radial-gradient(circle at 20% 20%, #e6e2e2 0, #ffffff 20%, transparent 55%),
         linear-gradient(160deg, #f2f2f2 0%, #cfcfcf 100%);
       min-height: 100vh;
       padding-top: 78px;
     }
+
+       
 
     .top-nav {
       position: fixed;
@@ -270,31 +272,151 @@
     }
 
     @media (max-width: 700px) {
-      .property-card {
-        min-height: 350px;
-      }
+  .property-card { min-height: 350px; }
+  .payment-grid { grid-template-columns: 1fr; }
+  .payment-notes { grid-template-columns: 1fr; }
+  .payment-section h2 { font-size: 2rem; }
+  .payment-subtitle { font-size: 1.1rem; }
+  .payment-notes h3 { font-size: 1.55rem; }
+  .payment-confirm { font-size: 1.35rem; }
+  .lang-btn { /* ... your existing lang-btn styles ... */ }
+  .lang-btn:hover,
+  .lang-btn:focus-visible { /* ... */ }
+} /* ← media query CLOSES HERE */
 
-      .payment-grid {
-        grid-template-columns: 1fr;
-      }
+/* ── Carousel – global styles ─────────────────────── */
+.featured-carousel {
+  display: grid;
+  gap: 1.5rem;
+}
 
-      .payment-notes {
-        grid-template-columns: 1fr;
-      }
+.carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
 
-      .payment-section h2 {
-        font-size: 2rem;
-      }
+.carousel-header p {
+  margin: 0;
+  color: #2e2e2e;
+  max-width: 640px;
+}
 
-      .payment-subtitle {
-        font-size: 1.1rem;
-      }
+.carousel-controls {
+  display: flex;
+  gap: 0.65rem;
+}
 
-      .payment-notes h3 {
-        font-size: 1.55rem;
-      }
+.carousel-button {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #6e6e6e;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111111;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
 
-      .payment-confirm {
-        font-size: 1.35rem;
-      }
-    }
+.carousel-button:hover,
+.carousel-button:focus-visible {
+  background: #ffffff;
+  border-color: #111111;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.carousel-viewport {
+  overflow: visible; /* lets scaled active card breathe */
+}
+
+/* No scrollbar — cards are rendered, not scrolled */
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+/* ── Cards ──────────────────────────────────────────── */
+.property-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 280px;         /* side cards fixed width */
+  min-height: 360px;
+  opacity: 0.62;
+  transform: scale(0.88);
+  transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease;
+  animation: cardFadeIn 0.35s ease;
+}
+
+.property-card.is-active {
+  flex: 0 0 380px;         /* active card wider */
+  min-height: 440px;
+  transform: scale(1);
+  opacity: 1;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+  z-index: 2;
+  position: relative;
+  border-color: #555;
+}
+
+.property-image {
+  height: 190px;
+  background-size: cover;
+  background-position: center;
+}
+
+.property-card.is-active .property-image {
+  height: 240px; /* taller hero image on active card */
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: scale(0.82); }
+  to   { opacity: 1; }   /* final opacity controlled by .property-card rule */
+}
+
+/* ── Dots ───────────────────────────────────────────── */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #b0b0b0;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, width 0.2s ease;
+}
+
+.carousel-dot[aria-current="true"] {
+  background: #111111;
+  width: 28px;             /* active dot stretches into a pill */
+  transform: none;
+}
+
+/* Mobile: single card, full width */
+@media (max-width: 700px) {
+  .property-card {
+    flex: 0 0 100%;
+    transform: scale(1);
+    opacity: 1;
+  }
+  .property-card.is-active {
+    flex: 0 0 100%;
+    min-height: 380px;
+  }
+}
