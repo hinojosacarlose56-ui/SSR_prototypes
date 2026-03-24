@@ -1,5 +1,5 @@
  :root {
-      --bg: #e2e2e2;
+      --bg: #9b3434;
       --ink: #111111;
       --accent: #c0c0c0;
       --accent-dark: #000000;
@@ -36,8 +36,8 @@
       flex-wrap: wrap;
       padding: 0.9rem 1rem;
       background: rgba(0, 0, 0, 0.95);
-      border-bottom: 1px solid rgba(192, 192, 192, 0.65);
-      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(2, 18, 2, 0.65);
+      backdrop-filter: blur(15px);
     }
 
     .top-nav a {
