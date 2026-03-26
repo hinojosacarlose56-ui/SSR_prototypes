@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Listing | Silver Saddle Realty</title>
+  <link rel="stylesheet" href="SSR.css">
+  <style>
+    body {
+      padding: 92px 1rem 2rem;
+    }
+
+    .page-shell {
+      width: min(1150px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .property-head {
+      display: grid;
+      gap: 0.4rem;
+      background: linear-gradient(180deg, var(--white-98), var(--surface-panel));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.3rem 1.2rem;
+      box-shadow: 0 16px 30px var(--shadow);
+    }
+
+    .property-title {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--accent-dark);
+    }
+
+    .property-location,
+    .property-meta {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .property-price {
+      margin: 0.2rem 0 0;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(290px, 1fr);
+      gap: 1.1rem;
+    }
+
+    .gallery,
+    .sidebar-card {
+      background: linear-gradient(180deg, var(--white-98), var(--surface-panel));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 16px 30px var(--shadow);
+    }
+
+    .gallery {
+      overflow: hidden;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: clamp(280px, 45vw, 460px);
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.55rem;
+      padding: 0.7rem;
+      background: var(--surface-tint-soft);
+    }
+
+    .thumb-grid img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--accent-border);
+    }
+
+    .description {
+      padding: 1rem 1.1rem 1.2rem;
+      border-top: 1px solid var(--line-soft);
+      line-height: 1.6;
+    }
+
+    .description h2 {
+      margin: 0 0 0.55rem;
+      font-size: 1.35rem;
+    }
+
+    .description p {
+      margin: 0;
+    }
+
+    .sidebar-card {
+      padding: 1rem;
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .sidebar-card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .feature-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .agent-card {
+      border-top: 1px solid var(--line-soft);
+      padding-top: 0.9rem;
+      display: grid;
+      gap: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      text-decoration: none;
+      text-align: center;
+      background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 52%, var(--accent-hover) 100%);
+      color: var(--accent-contrast);
+      border-radius: 999px;
+      padding: 0.8rem 1rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      box-shadow: 0 0 0 4px var(--accent-ring);
+      filter: brightness(1.03);
+      outline: none;
+    }
+
+    @media (max-width: 860px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .thumb-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-nav" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="index.html#about-us">About Us</a>
+    <a href="index.html#pay-now">Pay Now</a>
+    <a href="maintenance-request.html">Maintenance Request</a>
+    <a href="index.html#apply-now">Apply Now</a>
+  </nav>
+
+  <main class="page-shell">
+    <section class="property-head" aria-labelledby="listing-title">
+      <h1 class="property-title" id="listing-title">Cedar Ridge Estate</h1>
+      <p class="property-location">4127 Live Oak Ridge, Austin, TX</p>
+      <p class="property-meta">4 Bed | 3 Bath | 3,100 sq ft | 0.35 acres</p>
+      <p class="property-price">$785,000</p>
+    </section>
+
+    <section class="content-grid" aria-label="Listing details">
+      <article class="gallery">
+        <img class="hero-image" src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&fit=crop&w=1400&q=80" alt="Front exterior of Cedar Ridge Estate">
+        <div class="thumb-grid" aria-label="Mock property photos">
+          <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80" alt="Living room mock photo">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Kitchen mock photo">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80" alt="Bedroom mock photo">
+          <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=900&q=80" alt="Backyard mock photo">
+        </div>
+
+        <div class="description">
+          <h2>Property Overview</h2>
+          <p>This front-end listing page represents the click-through experience from your featured property cards. It includes a hero image, a photo gallery with mock photos, pricing, core specs, and a quick-contact section to mirror a real rental or purchase detail page.</p>
+        </div>
+      </article>
+
+      <aside class="sidebar-card">
+        <h2>Highlights</h2>
+        <ul class="feature-list">
+          <li>Open-concept kitchen with oversized island</li>
+          <li>Primary suite with spa-style bath</li>
+          <li>Two-car garage and fenced backyard</li>
+          <li>Near schools, parks, and shopping</li>
+        </ul>
+
+        <div class="agent-card">
+          <h2>Listing Contact</h2>
+          <p>Silver Saddle Realty Team</p>
+          <p>(555) 010-7823</p>
+          <p>info@silversaddlerealty.com</p>
+          <a class="cta" href="maintenance-request.html">Schedule a Tour</a>
+        </div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

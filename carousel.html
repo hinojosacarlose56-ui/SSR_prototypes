@@ -19,7 +19,7 @@
   </nav>
 
   <header class="hero">
-    <img src="SSR_logo.png" alt="Silver Saddle Realty logo" class="hero-image">
+    <img src="SSR_logo.png" alt="Silver Saddle Realty logo" class="hero-image hero-image-compact">
     <p>Helping families and investors find exceptional homes, ranches, and mountain-view properties across the region.</p>
   </header>
 
@@ -29,8 +29,8 @@
       <div class="carousel-header">
         <p>Browse the current spotlight listings with carousel controls instead of horizontal page scrolling.</p>
         <div class="carousel-controls">
-          <button class="carousel-button" type="button" id="featured-prev" aria-label="Show previous featured properties">&#8592;</button>
-          <button class="carousel-button" type="button" id="featured-next" aria-label="Show next featured properties">&#8594;</button>
+          <button class="carousel-button" type="button" id="featured-prev" aria-label="Show previous featured properties">&lt;</button>
+          <button class="carousel-button" type="button" id="featured-next" aria-label="Show next featured properties">&gt;</button>
         </div>
       </div>
 
@@ -114,8 +114,12 @@
         const property = featuredProperties[propertyIndex];
         const isActive = propertyIndex === currentIndex;
 
+        const cardAttributes = property.title === "Cedar Ridge Estate"
+          ? ` onclick="window.location.href='listing-details.html'" style="cursor: pointer;"`
+          : "";
+
         return `
-          <article class="property-card${isActive ? " is-active" : ""}" aria-hidden="${isActive ? "false" : "true"}">
+          <article class="property-card${isActive ? " is-active" : ""}" aria-hidden="${isActive ? "false" : "true"}"${cardAttributes}>
             <div class="property-image" style="background-image: url('${property.image}');"></div>
             <div class="property-content">
               <h3 class="property-title">${property.title}</h3>
